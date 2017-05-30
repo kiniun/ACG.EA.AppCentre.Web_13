@@ -1,0 +1,202 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="ACG.EA.AppCentre.Web.Site" %>
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head runat="server">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="icon" href="../../favicon.ico" />
+      <script type="text/javascript" src="/Support/Scripts/assets/js/ie-emulation-modes-warning.js"></script>
+    <title>AppCentre Dashboard</title>
+      <script type="text/javascript" src="/Support/Scripts/jquery.jqGrid-4.6.0/js/jquery-1.11.0.min.js"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <link href="/Support/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Support/Content/jquery-ui-1.11.0/jquery-ui.min.css" rel="stylesheet" />
+    <link href="/Support/Content/ui.jqgrid.css" rel="stylesheet" />
+    <link href="/Support/Styles/dashboard.css" rel="stylesheet" />
+    <script type="text/javascript" src="/Support/Scripts/assets/js/ie-emulation-modes-warning.js"></script>
+    <script type="text/javascript" src="/Support/Scripts/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script type="text/javascript" src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script type="text/javascript" src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+      <script type="text/javascript">
+          
+      </script>
+  </head>
+
+  <body>    
+    <form id="form2" runat="server">
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/Webpages">ACG Application Centre</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a>You log in:&nbsp;&nbsp; <%=Session["User"].ToString() %></a>
+                            <span style="display: none" id="fldCurrentUser"><%=Session["UserName"].ToString() %></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <% if((bool)Session["InRole"]) { %>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-3 col-md-2 sidebar">
+                        <ul class="nav nav-sidebar">
+                            <li class="active others"><a class="others" href="Applications.aspx">Applications</a>
+                                <div data-bind="visible: catalogApps().length > 0">
+                                    <ul data-bind="foreach: catalogApps" class="collapsibleList">
+                                        <li id="catalogApps">
+                                            <div class="catMenu">
+                                                <div style="cursor: default" onclick="showList(this)">
+                                                    <span class="ui-icon ui-icon-triangle-1-e" data-bind="css: catalog_name"></span><span data-bind="text: catalog_name">
+                                                    </span>
+                                                </div>
+                                                <ul data-bind="foreach: apps, css: catalog_name">
+                                                    <li>
+                                                        <a href="#" data-bind="attr: { href: application_uri, title: application_id }" target="_blank"><span data-bind="text: application_name"></span></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <%if ((bool)Session["IsAppAdmin"])
+                              { %>
+                            <li class="others" id="appAdmin"><a class="others" href="AppAdmin.aspx">Application Admin</a>
+                                <ul>
+                                    <li>
+                                        <span><a href="appUserPermissionReport.aspx">User Permission Report</a></span><br />
+                                    </li>
+                                    <li>
+                                        <span><a href="grpPermissionReport.aspx">Group Permission Report</a></span><br />
+                                    </li>
+                                </ul>
+                            </li>
+                            <% } %>
+                        <%if ((bool)Session["IsAppAdmin"])
+                          { %>
+                            <li id="users"><a class="others">User Admin</a>
+                                <div>
+                                    <ul>
+                                        <li>
+                                            <span><a href="userEdit.aspx">User Edit</a></span><br />
+                                        </li>
+                                        <li>
+                                            <span><a href="allPermissions.aspx">User Permission Edit</a></span><br />
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                        <% } %>
+                    </div>
+                    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                        <asp:ContentPlaceHolder ID="DashBoardPlaceHolder" runat="server">
+                        </asp:ContentPlaceHolder>
+
+                    </div>
+                </div>
+            </div>
+        <% } 
+           else { %>
+            <div class="container-fluid">
+                <p> You do not have permissions to view AppCentre</p>
+            </div>
+        <% } %>
+
+        <script type="text/javascript" src="/Support/Content/jquery-ui-1.11.0/jquery-ui.js"></script>
+        <script type="text/javascript" src="/Support/Scripts/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/Support/Scripts/js/docs.min.js"></script>
+        <script type="text/javascript" src="/Support/Scripts/jqGrid/grid.locale-en.js"></script>
+        <script type="text/javascript" src="/Support/Scripts/jquery.jqGrid-4.6.0/js/jquery.jqGrid.min.js"></script>
+        <script type="text/javascript" src="/Support/Scripts/knockout-3.0.0.min.js"></script>
+        <script type="text/javascript" src="/Support/Scripts/js/underscore-min.js"></script>
+        <script type="text/javascript" src="/Support/Scripts/js/main.js"></script>
+        <script type="text/javascript" src="/Support/Scripts/js/apcModel.js"></script>
+    <script type="text/javascript" src="/Support/Scripts/js/CollapsibleLists.js"></script>
+        
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("input[type=submit], button")
+            .button().click(function (event) {
+                event.preventDefault();
+            });
+        });
+
+        function showList(sender) {
+            if (sender.parentElement.children[1].style.display == 'none') {
+                $('div.catMenu ul').hide();
+                $('div.catMenu div span.ui-icon').removeClass('ui-icon-triangle-1-se');
+                $('div.catMenu div span.ui-icon').addClass('ui-icon-triangle-1-e');
+                sender.parentElement.children[1].style.display = 'block';
+                if (sender.children[0].className === 'ui-icon ui-icon-triangle-1-se')
+                    sender.children[0].className = 'ui-icon ui-icon-triangle-1-e';
+                else if (sender.children[0].className ===  'ui-icon ui-icon-triangle-1-e')
+                    sender.children[0].className = 'ui-icon ui-icon-triangle-1-se';
+//                var icons = $('div.catMenu div span.ui-icon');
+//                getIcons(icons, sender);
+                //$('div.catMenu div span.ui-icon').addClass('ui-icon-triangle-1-se');
+            }
+            else {
+                sender.parentElement.children[1].style.display = 'none';
+                $('div.catMenu div span.ui-icon').removeClass('ui-icon-triangle-1-se');
+                $('div.catMenu div span.ui-icon').addClass('ui-icon-triangle-1-e');
+//                if (sender.children[0].className === 'ui-icon ui-icon-triangle-1-se')
+//                    sender.children[0].className = 'ui-icon ui-icon-triangle-1-e';
+//                if (sender.children[0].className === 'ui-icon ui-icon-triangle-1-e')
+//                    sender.children[0].className = 'ui-icon ui-icon-triangle-1-se';
+//                $('div.catMenu div span.ui-icon').removeClass('ui-icon-triangle-1-se');
+//                $('div.catMenu div span.ui-icon').addClass('ui-icon-triangle-1-e');
+            }
+        }
+
+        function getIcons(icons, sender)
+        {
+            if (icons.length > 0) {
+                for (var i = 0; i < icons.length; i++) {
+                    var catalog;
+                    if (icons[i].nextElementSibling != undefined) {
+                        catalog = icons[i].nextElementSibling.innerHTML;
+                    }
+                    else {
+                        catalog = icons[i].nextSibling.innerHTML;
+                    }
+                    if (catalog == sender.children[1].innerHTML) {
+                        if (icons[i].hasClass('ui-icon-triangle-1-e')) {
+                            icons[i].removeClass('ui-icon-triangle-1-e');
+                            icons[i].addClass('ui-icon-triangle-1-se');
+                        }
+                        if (icons[i].hasClass('ui-icon-triangle-1-se')) {
+                            icons[i].removeClass('ui-icon-triangle-1-se');
+                            icons[i].addClass('ui-icon-triangle-1-e');
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    </form>
+  </body>
+</html>
+
+

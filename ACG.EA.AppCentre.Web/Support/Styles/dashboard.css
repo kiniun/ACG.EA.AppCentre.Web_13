@@ -1,0 +1,262 @@
+﻿/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+}
+
+
+/*
+ * Global add-ons
+ */
+
+.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+  border: 0; background-color: #69f;
+  margin-top: 10px; 
+}
+/*.navbar-fixed-top,*/ 
+.containter-fluid
+{ width: 88.8889%; }
+
+.sidebar, .navbar-fixed-top
+{
+    margin-left: 100px;
+}
+/*.container-fluid
+{
+    margin-left: 120px
+}*/
+.navbar-header a, .navbar-collapse a
+{
+    color: white !important;
+}
+.navbar-header a
+{
+    font: bold 24px arial, verdana;
+}
+.nav-sidebar > li > a:active {
+    background-color: #2A6496 !important;
+}
+/*
+ * Sidebar
+ */
+
+/* Hide for mobile, show later */
+.sidebar {
+  display: none;
+}
+@media (min-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background-color: #f5f5f5;
+    border-right: 1px solid #eee;
+  }
+}
+
+/* Sidebar navigation */
+.nav-sidebar {
+  margin-right: -21px; /* 20px padding + 1px border 
+  margin-bottom: 20px;*/
+  margin-left: -20px;
+}
+.nav-sidebar > li.others > a:active {
+  color: #fff !important;
+  background-color: #428bca ;
+}
+
+.nav-sidebar > li > a {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.nav-sidebar > li > a.others {
+    font: bold 15px arial, verdana;
+}
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+  color: #fff;
+  background-color: #428bca;
+}
+/*
+ * Main content
+ */
+
+.main {
+  padding: 20px;
+}
+@media (min-width: 768px) {
+  .main {
+    padding-right: 40px;
+    padding-left: 140px;
+  }
+}
+.main .page-header {
+  margin-top: 0;
+}
+
+
+/*
+ * Placeholder dashboard ideas
+ */
+
+.placeholders {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.placeholders h4 {
+  margin-bottom: 0;
+}
+.placeholder {
+  margin-bottom: 20px;
+}
+.placeholder img {
+  display: inline-block;
+  border-radius: 50%;
+}
+
+div.newPermissions span {
+    text-decoration: underline;
+}
+
+div.newPermissions {
+    margin-bottom: 10px;
+    padding-left: 10px;
+}
+
+td.newPermissionsHdr {
+    text-align: center;
+}
+
+input#permId, div.newAppPermission #fldPermissionTarget {
+    position: relative;
+    top: -10px;
+}
+
+td.newPermissionsDtl {
+    padding-right: 10px
+}
+
+button#addPermission {
+    margin-left: 80px;
+}
+table.newGroup td {
+    padding: 5px !important;
+}
+
+.groupButtons {
+    padding-left: 200px;
+}
+
+td > input.permName {
+    margin-left: 20px;
+}
+
+.newAppPermission {
+    display: none;
+}
+.newAppPermission h4 {
+    margin-left: 100px;
+}
+
+#catalogApps ul {
+    padding-left: 15px;
+}
+
+tr.ui-row-ltr td {
+    font-size: 15px;
+}
+.nav > li > a {
+    padding-bottom: 4px;
+    padding-top: 4px;
+}
+.nav-sidebar > li > a {
+    padding-right: 5px;
+    padding-left: 10px;
+    font: normal 1em Arial;
+}
+ul.nav-sidebar {
+    margin-top: 30px;
+}
+p.lblSuccessText { 
+    font: bold 13px arial, verdana;
+}
+#catalogApps {
+    /*list-style-type: none;*/
+}
+.ui-jqgrid tr.jqgrow {
+    cursor: pointer;
+}
+.chkBxImage, .chkBxImageShow {
+    background-position: 10px;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+}
+
+.chkBxImageShow {
+     display: inline-block;
+}
+#bxUserPermissions {
+    margin-top: 50px;
+}
+.btnGroups {
+    cursor: pointer;
+    text-decoration: underline;
+}
+.groupEnabled {
+    display: none;
+}
+#btnExport2Excel {
+    cursor: pointer;
+    text-decoration: underline;
+    font: bold 10px arial, verdana;
+    color: blue;
+}
+#tblAppUserPermissions_target_value {
+    visibility:hidden
+}
+.checkedGroupPermissions, .checkedGroupPermTargets, .fldUserPermissions, .fldusrPermissionId, .fldusrGrpPermissionId, .fldusrGrpPermEnable, .fldPermTargetValue, #fldUserValidation, .chkBxImage, .chkBxChecked  {
+    display: none;
+}
+#userViewEdit
+{
+    font:bold 16px arial, verdana;
+}
+#fldUserValidation {
+    /*color: red;*/
+    font: bold 14px;
+}
+.collapsibleList 
+{ 
+    list-style-type: none; }
+div.catMenu div
+{
+    display: inline-block; margin-left: -20px;
+}
+div.catMenu ul
+{
+    list-style-type: disc;
+}
+.ui-icon-triangle-1-e, .ui-icon-triangle-1-se
+{
+    position:relative; top: 2px; display: inline-block;
+}

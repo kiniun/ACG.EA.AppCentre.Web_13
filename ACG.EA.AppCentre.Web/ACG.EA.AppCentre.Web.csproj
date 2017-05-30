@@ -1,0 +1,575 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9F662AC9-2928-4DE8-B763-39C0FA5CE90B}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ACG.EA.AppCentre.Web</RootNamespace>
+    <AssemblyName>ACG.EA.AppCentre.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication>disabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AppCentreWebLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AppCentreWebLib\obj\Release\AppCentreWebLib.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.bootstrap">
+      <HintPath>..\..\SampleApp\SampleApp\bin\AspNet.ScriptManager.bootstrap.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.jQuery">
+      <HintPath>..\..\SampleApp\SampleApp\bin\AspNet.ScriptManager.jQuery.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.5\lib\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AppCentreWebLib\bin\Debug\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\AppCentreWebLib\bin\Debug\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\packages\iTextSharp.5.5.3\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.FriendlyUrls">
+      <HintPath>..\..\SampleApp\SampleApp\bin\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Web.Optimization.WebForms">
+      <HintPath>..\..\SampleApp\SampleApp\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ScriptManager.MSAjax">
+      <HintPath>..\..\SampleApp\SampleApp\bin\Microsoft.ScriptManager.MSAjax.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.WebForms">
+      <HintPath>..\..\SampleApp\SampleApp\bin\Microsoft.ScriptManager.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SampleApp\SampleApp\bin\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.0\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.0\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\ACG.EA.AppCentre.Web.dll" />
+    <Content Include="bin\ACG.EA.AppCentre.Web.pdb" />
+    <Content Include="bin\AppCentreWebLib.dll" />
+    <Content Include="bin\AspNet.ScriptManager.bootstrap.dll" />
+    <Content Include="bin\AspNet.ScriptManager.jQuery.dll" />
+    <Content Include="bin\DocumentFormat.OpenXml.dll" />
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\EntityFramework.SqlServer.xml" />
+    <Content Include="bin\EntityFramework.xml" />
+    <Content Include="bin\itextsharp.dll" />
+    <Content Include="bin\itextsharp.xml" />
+    <Content Include="bin\Microsoft.AspNet.FriendlyUrls.dll" />
+    <Content Include="bin\Microsoft.AspNet.FriendlyUrls.xml" />
+    <Content Include="bin\Microsoft.AspNet.Web.Optimization.WebForms.dll" />
+    <Content Include="bin\Microsoft.ScriptManager.MSAjax.dll" />
+    <Content Include="bin\Microsoft.ScriptManager.WebForms.dll" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\Newtonsoft.Json.xml" />
+    <Content Include="bin\System.Net.Http.Formatting.dll" />
+    <Content Include="bin\System.Net.Http.Formatting.xml" />
+    <Content Include="bin\System.Web.Http.dll" />
+    <Content Include="bin\System.Web.Http.WebHost.dll" />
+    <Content Include="bin\System.Web.Http.WebHost.xml" />
+    <Content Include="bin\System.Web.Http.xml" />
+    <Content Include="bin\System.Web.Optimization.dll" />
+    <Content Include="bin\System.Web.Optimization.xml" />
+    <Content Include="Support\Content\Images\check.GIF" />
+    <Content Include="Support\Content\Images\chkbox1_off.GIF" />
+    <Content Include="Support\Content\Images\chkbox1_on.GIF" />
+    <Content Include="Support\Content\Images\chkbox2_off.GIF" />
+    <Content Include="Support\Content\Images\chkbox2_on.GIF" />
+    <Content Include="Support\Content\Images\chkbox3_off.GIF" />
+    <Content Include="Support\Content\Images\chkbox3_on.GIF" />
+    <Content Include="Support\Content\Images\chkbox4_on.gif" />
+    <Content Include="Support\Scripts\js\apcModel.js" />
+    <Content Include="Support\Scripts\js\CollapsibleLists.js" />
+    <Content Include="Support\Scripts\js\jqGridExportToExcel.js" />
+    <Content Include="Support\Scripts\js\lodashAppCentre.js" />
+    <Content Include="Support\Scripts\js\main.js" />
+    <Content Include="Support\Scripts\js\underscore-min.js" />
+    <Content Include="Utils\ExportGridToExcel.ashx" />
+    <Content Include="Webpages\activityLog.aspx" />
+    <Content Include="Webpages\allpermissions.aspx" />
+    <Content Include="Webpages\applicationManagement.aspx" />
+    <Content Include="Webpages\appPermissionReport.aspx" />
+    <Content Include="Webpages\appManagement.ascx" />
+    <Content Include="Webpages\appUserPermissionReport.aspx" />
+    <Content Include="Webpages\EditGroups.ascx" />
+    <Content Include="Webpages\ErrorPage.aspx" />
+    <Content Include="Webpages\groupManagement.ascx" />
+    <Content Include="Webpages\grpPermissionReport.aspx" />
+    <Content Include="Webpages\newApplication.aspx" />
+    <Content Include="Webpages\permissionEdit.aspx" />
+    <Content Include="Utils\ExportGridToPDF.ashx" />
+    <None Include="bin\ACG.EA.AppCentre.Web.dll.config" />
+    <Content Include="Support\Content\bootstrap-theme.css" />
+    <Content Include="Support\Content\bootstrap-theme.min.css" />
+    <Content Include="Support\Content\bootstrap.css" />
+    <Content Include="Support\Content\bootstrap.min.css" />
+    <Content Include="Support\Styles\dashboard.css" />
+    <Content Include="Support\Content\jquery-ui-1.11.0\external\jquery\jquery.js" />
+    <Content Include="Support\Content\jquery-ui-1.11.0\images\animated-overlay.gif" />
+    <Content Include="Support\Content\jquery-ui-1.11.0\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Support\Content\jquery-ui-1.11.0\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="Support\Content\jquery-ui-1.11.0\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Support\Content\jquery-ui-1.11.0\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="Support\Content\jquery-ui-1.11.0\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="Support\Content\jquery-ui-1.11.0\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Support\Content\jquery-ui-1.11.0\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Support\Content\jquery-ui-1.11.0\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Support\Content\jquery-ui-1.11.0\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="Support\Content\jquery-ui-1.11.0\images\ui-icons_222222_256x240.png" />
+    <Content Include="Support\Content\jquery-ui-1.11.0\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="Support\Content\jquery-ui-1.11.0\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="Support\Content\jquery-ui-1.11.0\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Support\Content\jquery-ui-1.11.0\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Support\Content\jquery-ui-1.11.0\index.html" />
+    <Content Include="Support\Content\jquery-ui-1.11.0\jquery-ui.css" />
+    <Content Include="Support\Content\jquery-ui-1.11.0\jquery-ui.js" />
+    <Content Include="Support\Content\jquery-ui-1.11.0\jquery-ui.min.css" />
+    <Content Include="Support\Content\jquery-ui-1.11.0\jquery-ui.min.js" />
+    <Content Include="Support\Content\jquery-ui-1.11.0\jquery-ui.structure.css" />
+    <Content Include="Support\Content\jquery-ui-1.11.0\jquery-ui.structure.min.css" />
+    <Content Include="Support\Content\jquery-ui-1.11.0\jquery-ui.theme.css" />
+    <Content Include="Support\Content\jquery-ui-1.11.0\jquery-ui.theme.min.css" />
+    <Content Include="Support\Content\ui.jqgrid.css" />
+    <Content Include="Support\Scripts\assets\js\ie-emulation-modes-warning.js" />
+    <Content Include="Support\Scripts\assets\js\ie10-viewport-bug-workaround.js" />
+    <Content Include="Support\Scripts\bootstrap.js" />
+    <Content Include="Support\Scripts\bootstrap.min.js" />
+    <Content Include="Support\Scripts\jqGrid\grid.locale-en.js" />
+    <Content Include="Support\Scripts\jqGrid\jquery.jqAutoComplete.min.js" />
+    <Content Include="Support\Scripts\jqGrid\jquery.jqDatePicker.min.js" />
+    <Content Include="Support\Scripts\jqGrid\jquery.jqGrid.js" />
+    <Content Include="Support\Scripts\jqGrid\jquery.jqGrid.min.js" />
+    <Content Include="Webpages\userEdit.aspx" />
+    <Content Include="Webpages\AppAdmin.aspx" />
+    <Content Include="Webpages\Applications.aspx" />
+    <Content Include="Webpages\userPermissions.aspx" />
+    <Content Include="Webpages\Users.aspx" />
+    <None Include="Properties\PublishProfiles\localhost.pubxml" />
+    <None Include="Support\Scripts\jquery-1.9.0.intellisense.js" />
+    <Content Include="Support\Scripts\jquery-1.9.0.js" />
+    <Content Include="Support\Scripts\jquery-1.9.0.min.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\css\ui.jqgrid.css" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\Changes.txt" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-ar.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-bg.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-bg1251.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-cat.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-cn.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-cs.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-da.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-de.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-dk.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-el.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-en.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-es.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-fa.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-fi.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-fr.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-gl.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-he.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-hr.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-hr1250.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-hu.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-id.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-is.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-it.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-ja.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-kr.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-lt.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-mne.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-nl.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-no.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-pl.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-pt-br.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-pt.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-ro.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-ru.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-sk.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-sr-latin.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-sr.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-sv.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-th.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-tr.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-tw.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-ua.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\i18n\grid.locale-vi.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\install.txt" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\jquery-1.11.0.min.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\jquery.jqGrid.min.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\js\jquery.jqGrid.src.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\plugins\grid.addons.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\plugins\grid.postext.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\plugins\grid.setcolumns.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\plugins\jquery.contextmenu.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\plugins\jquery.searchFilter.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\plugins\jquery.tablednd.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\plugins\searchFilter.css" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\plugins\ui.multiselect.css" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\plugins\ui.multiselect.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\css\ui.jqgrid.css" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\css\ui.multiselect.css" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\grid.base.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\grid.celledit.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\grid.common.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\grid.custom.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\grid.filter.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\grid.formedit.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\grid.grouping.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\grid.import.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\grid.inlinedit.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\grid.jqueryui.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\grid.loader.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\grid.pivot.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\grid.subgrid.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\grid.tbltogrid.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\grid.treegrid.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-ar.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-bg.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-bg1251.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-cat.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-cn.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-cs.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-da.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-de.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-dk.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-el.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-en.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-es.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-fa.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-fi.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-fr.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-gl.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-he.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-hr.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-hr1250.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-hu.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-id.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-is.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-it.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-ja.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-kr.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-lt.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-mne.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-nl.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-no.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-pl.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-pt-br.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-pt.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-ro.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-ru.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-sk.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-sr-latin.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-sr.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-sv.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-th.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-tr.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-tw.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-ua.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\i18n\grid.locale-vi.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\jqDnR.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\jqModal.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\jquery.fmatter.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\jquery.jqGrid.js" />
+    <Content Include="Support\Scripts\jquery.jqGrid-4.6.0\src\JsonXml.js" />
+    <Content Include="Support\Scripts\js\docs.min.js" />
+    <Content Include="Support\Scripts\knockout-3.0.0.min.js" />
+    <Content Include="Webpages\Default.aspx" />
+    <Content Include="Support\Content\bootstrap-theme.css.map" />
+    <Content Include="Support\Content\bootstrap.css.map" />
+    <Content Include="Support\Scripts\jquery-1.9.0.min.map" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <Content Include="Webpages\Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\AppCenterController.cs" />
+    <Compile Include="Utils\ArrayList.cs" />
+    <Compile Include="Utils\ExportGridToExcel.ashx.cs">
+      <DependentUpon>ExportGridToExcel.ashx</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utils\ExportGridToPDF.ashx.cs">
+      <DependentUpon>ExportGridToPDF.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\AC_Base.cs" />
+    <Compile Include="Utils\CreateExcelFile.cs" />
+    <Compile Include="Utils\CreatePDFFile.cs" />
+    <Compile Include="Webpages\activityLog.aspx.cs">
+      <DependentUpon>activityLog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Webpages\activityLog.aspx.designer.cs">
+      <DependentUpon>activityLog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Webpages\allpermissions.aspx.cs">
+      <DependentUpon>allpermissions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Webpages\allpermissions.aspx.designer.cs">
+      <DependentUpon>allpermissions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Webpages\applicationManagement.aspx.cs">
+      <DependentUpon>applicationManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Webpages\applicationManagement.aspx.designer.cs">
+      <DependentUpon>applicationManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Webpages\appPermissionReport.aspx.cs">
+      <DependentUpon>appPermissionReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Webpages\appPermissionReport.aspx.designer.cs">
+      <DependentUpon>appPermissionReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Webpages\appManagement.ascx.cs">
+      <DependentUpon>appManagement.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Webpages\appManagement.ascx.designer.cs">
+      <DependentUpon>appManagement.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Webpages\appUserPermissionReport.aspx.cs">
+      <DependentUpon>appUserPermissionReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Webpages\appUserPermissionReport.aspx.designer.cs">
+      <DependentUpon>appUserPermissionReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Webpages\EditGroups.ascx.cs">
+      <DependentUpon>EditGroups.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Webpages\EditGroups.ascx.designer.cs">
+      <DependentUpon>EditGroups.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Application.cs" />
+    <Compile Include="Models\QueryModels.cs" />
+    <Compile Include="Models\UserAdmin.cs" />
+    <Compile Include="Webpages\ErrorPage.aspx.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Webpages\ErrorPage.aspx.designer.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Webpages\groupManagement.ascx.cs">
+      <DependentUpon>groupManagement.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Webpages\groupManagement.ascx.designer.cs">
+      <DependentUpon>groupManagement.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Webpages\grpPermissionReport.aspx.cs">
+      <DependentUpon>grpPermissionReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Webpages\grpPermissionReport.aspx.designer.cs">
+      <DependentUpon>grpPermissionReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Webpages\newApplication.aspx.cs">
+      <DependentUpon>newApplication.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Webpages\newApplication.aspx.designer.cs">
+      <DependentUpon>newApplication.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Webpages\permissionEdit.aspx.cs">
+      <DependentUpon>permissionEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Webpages\permissionEdit.aspx.designer.cs">
+      <DependentUpon>permissionEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Webpages\Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Webpages\Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Webpages\userEdit.aspx.cs">
+      <DependentUpon>userEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Webpages\userEdit.aspx.designer.cs">
+      <DependentUpon>userEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\AppCentreAdminLib.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Webpages\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Webpages\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\AuthorizationRules.cs" />
+    <Compile Include="Utils\ExceptionHandler.cs" />
+    <Compile Include="Webpages\AppAdmin.aspx.cs">
+      <DependentUpon>AppAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Webpages\AppAdmin.aspx.designer.cs">
+      <DependentUpon>AppAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Webpages\Applications.aspx.cs">
+      <DependentUpon>Applications.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Webpages\Applications.aspx.designer.cs">
+      <DependentUpon>Applications.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Webpages\userPermissions.aspx.cs">
+      <DependentUpon>userPermissions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Webpages\userPermissions.aspx.designer.cs">
+      <DependentUpon>userPermissions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Webpages\Users.aspx.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Webpages\Users.aspx.designer.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1383</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:7028/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

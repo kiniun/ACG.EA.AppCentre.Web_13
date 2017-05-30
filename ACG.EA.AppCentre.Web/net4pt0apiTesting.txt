@@ -1,0 +1,41 @@
+http://localhost:8695/api/appcentre/GetAdminApplications/?user=jshi - pass
+
+http://localhost:8695/api/appcentre/GetAllAppUsers/?searchBy=User_Name&user=jshi - pass
+
+http://localhost:8695/api/appcentre/LoadAppUsersActivityLog/?appId=appcentre - pass
+
+http://localhost:8695/api/appcentre/GetUserAppGrp/?user=1&appId=Appcentre - pass
+
+http://localhost:8695/api/appcentre/GetUserPermissions_V1/?user=31&appId=bcs - pass - had below error initially
+SyncUserGroups
++		base	{"The specified type member 'PERMISSION' is not supported in LINQ to Entities. Only initializers, entity members, and entity navigation properties are supported."}	System.SystemException {System.NotSupportedException}
+
+http://localhost:8695/api/appcentre/SyncUserGroups/?uGroups model - update query, test pending
+
+
+http://localhost:8695/api/appcentre/SyncUserPermissions/?uGroups model - update query, test pending
+
+http://localhost:8695/api/appcentre/GetApplicationTargets/?appId=abc - pass
+
+http://localhost:8695/api/appcentre/GetAppTargetValues/?appId=abc - pass
+
+http://localhost:8695/api/appcentre/GetGrpPermissionsV1/?applicationId=abc&groupId=a/p - pass
+
+http://localhost:8695/api/appcentre/SearchUsersApplications/?user=iali&searchby=Name&keyword=a - pass
+
+http://localhost:8695/api/appcentre/FilterApplications/?searchby=Name&query=a - pending
+
+http://localhost:8695/api/appcentre/GetApplicationUsers/?applicationId=abc&groupId=a/p - pass
+
+http://localhost:8695/api/appcentre/LoadAppGroupPermissions/?applicationId=abc&groupId=a/p - pass
+
+http://localhost:8695/api/appcentre/AddUser/?User Model - test pending
+
+http://localhost:8695/api/appcentre/RemoveUser/?userId - test pending
+
+http://localhost:8695/api/appcentre/UpdateApplication/?Application Model - test pending
+
+http://localhost:8695/api/appcentre/SaveNewApplication/?Application Model - test pending
+
+
+

@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B2ADA2F2-6428-47EF-A7AB-05022A43793C}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AppCentreWebLib4._0</RootNamespace>
+    <AssemblyName>AppCentreWebLib4._0</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>AppCentreWebLib4.0.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DAL\ACTIVITY_LOG.cs">
+      <DependentUpon>AppCentreDbBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\AppCentreDbBase.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppCentreDbBase.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\AppCentreDbBase.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppCentreDbBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\AppCentreDbBase.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppCentreDbBase.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\APPLICATION.cs">
+      <DependentUpon>AppCentreDbBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\APPLICATION_GROUP.cs">
+      <DependentUpon>AppCentreDbBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\CATALOG.cs">
+      <DependentUpon>AppCentreDbBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\GROUP_PERMISSION.cs">
+      <DependentUpon>AppCentreDbBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PERMISSION.cs">
+      <DependentUpon>AppCentreDbBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\TARGET.cs">
+      <DependentUpon>AppCentreDbBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\TARGET_VALUE.cs">
+      <DependentUpon>AppCentreDbBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\USER.cs">
+      <DependentUpon>AppCentreDbBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\USER_APPLICATION_GROUP.cs">
+      <DependentUpon>AppCentreDbBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\USER_PERMISSION.cs">
+      <DependentUpon>AppCentreDbBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\VW_USER_PERMISSION.cs">
+      <DependentUpon>AppCentreDbBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataUtils\AppCentreUtils.cs" />
+    <Compile Include="DataUtils\AppsAdministration.cs" />
+    <Compile Include="DataUtils\Permissions.cs" />
+    <Compile Include="DataUtils\UserAdminLib.cs" />
+    <Compile Include="Models\Application.cs" />
+    <Compile Include="Models\ModelUtils.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\Authorization.cs" />
+    <Compile Include="Utils\ExceptionHandler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="AppCentreWebLib4.0.snk" />
+    <None Include="bin\Debug\AppCentreWebLib4._0.exe.config" />
+    <None Include="bin\Debug\AppCentreWebLib4._0.vshost.exe.config" />
+    <None Include="bin\Debug\AppCentreWebLib4._0.vshost.exe.manifest" />
+    <EntityDeploy Include="DAL\AppCentreDbBase.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AppCentreDbBase.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DAL\AppCentreDbBase.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AppCentreDbBase.edmx</DependentUpon>
+      <LastGenOutput>AppCentreDbBase.Context.cs</LastGenOutput>
+    </None>
+    <None Include="DAL\AppCentreDbBase.edmx.diagram">
+      <DependentUpon>AppCentreDbBase.edmx</DependentUpon>
+    </None>
+    <None Include="DAL\AppCentreDbBase.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AppCentreDbBase.edmx</DependentUpon>
+      <LastGenOutput>AppCentreDbBase.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\AppCentreWebLib4._0.vshost.exe" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

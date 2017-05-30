@@ -1,0 +1,995 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AppCentreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ACTIVITY_LOG">
+          <Key>
+            <PropertyRef Name="ACTIVITY_LOG_ID" />
+          </Key>
+          <Property Name="ACTIVITY_LOG_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USER_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="APPLICATION_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TARGET_VALUE" Type="varchar" MaxLength="50" />
+          <Property Name="ACTIVITY_DATE" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="APPLICATION">
+          <Key>
+            <PropertyRef Name="APPLICATION_ID" />
+          </Key>
+          <Property Name="APPLICATION_ID" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="CATALOG_ID" Type="varchar" MaxLength="15" />
+          <Property Name="APPLICATION_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="APPLICATION_URI" Type="varchar" MaxLength="215" />
+          <Property Name="APPLICATION_DESC" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="APPLICATION_GROUP">
+          <Key>
+            <PropertyRef Name="GROUP_ID" />
+            <PropertyRef Name="APPLICAITON_ID" />
+          </Key>
+          <Property Name="GROUP_ID" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="APPLICAITON_ID" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="GROUP_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CATALOG">
+          <Key>
+            <PropertyRef Name="CATALOG_ID" />
+          </Key>
+          <Property Name="CATALOG_ID" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="CATALOG_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GROUP_PERMISSION">
+          <Key>
+            <PropertyRef Name="GROUP_PERMISSSION_ID" />
+          </Key>
+          <Property Name="GROUP_PERMISSSION_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GROUP_ID" Type="varchar" MaxLength="15" />
+          <Property Name="APPLICATION_ID" Type="varchar" MaxLength="15" />
+          <Property Name="PERMISSION_ID" Type="varchar" MaxLength="15" />
+          <Property Name="TARGET_VALUE_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="PERMISSION">
+          <Key>
+            <PropertyRef Name="PERMISSION_ID" />
+            <PropertyRef Name="APPLICATION_ID" />
+          </Key>
+          <Property Name="PERMISSION_ID" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="APPLICATION_ID" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="TARGET_ID" Type="int" />
+          <Property Name="PERMISSION_NAME" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="GROUP_ENABLED" Type="bit" />
+        </EntityType>
+        <EntityType Name="TARGET">
+          <Key>
+            <PropertyRef Name="TARGET_ID" />
+            <PropertyRef Name="APPLICATION_ID" />
+          </Key>
+          <Property Name="TARGET_ID" Type="int" Nullable="false" />
+          <Property Name="APPLICATION_ID" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="TARGET_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TARGET_VALUE">
+          <Key>
+            <PropertyRef Name="TARGET_VALUE_ID" />
+          </Key>
+          <Property Name="TARGET_VALUE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TARGET_ID" Type="int" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="VALUE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="APPLICATION_ID" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="USER_ID" />
+          </Key>
+          <Property Name="USER_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USER_NAME" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="FIRST_NAME" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="LAST_NAME" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="TITLE" Type="varchar" MaxLength="50" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="50" />
+          <Property Name="PHONE" Type="varchar" MaxLength="25" />
+          <Property Name="CREATE_DATE" Type="datetime" Nullable="false" />
+          <Property Name="LAST_MODIFIED" Type="datetime" />
+          <Property Name="MODIFIED_BY" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="USER_APPLICATION_GROUP">
+          <Key>
+            <PropertyRef Name="USER_APPLICATION_GROUP_ID" />
+          </Key>
+          <Property Name="USER_APPLICATION_GROUP_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USER_ID" Type="int" Nullable="false" />
+          <Property Name="GROUP_ID" Type="varchar" MaxLength="15" />
+          <Property Name="APPLICATION_ID" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="USER_PERMISSION">
+          <Key>
+            <PropertyRef Name="USER_PERMISSION_ID" />
+          </Key>
+          <Property Name="USER_PERMISSION_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USER_ID" Type="int" Nullable="false" />
+          <Property Name="PERMISSION_ID" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="APPLICATION_ID" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="TARGET_VALUE_ID" Type="int" />
+          <Property Name="GRANT" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AppCentre.dbo.VW_USER_PERMISSION' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VW_USER_PERMISSION">
+          <Key>
+            <PropertyRef Name="USER_NAME" />
+            <PropertyRef Name="APPLICATION_ID" />
+            <PropertyRef Name="PERMISSION_ID" />
+            <PropertyRef Name="PERMISSION_NAME" />
+          </Key>
+          <Property Name="USER_NAME" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="APPLICATION_ID" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="PERMISSION_ID" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="PERMISSION_NAME" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="VALUE" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_APPLICATION_CATALOG">
+          <End Role="CATALOG" Type="Self.CATALOG" Multiplicity="0..1" />
+          <End Role="APPLICATION" Type="Self.APPLICATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATALOG">
+              <PropertyRef Name="CATALOG_ID" />
+            </Principal>
+            <Dependent Role="APPLICATION">
+              <PropertyRef Name="CATALOG_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_APPLICATION_GROUP_APPLICATION">
+          <End Role="APPLICATION" Type="Self.APPLICATION" Multiplicity="1" />
+          <End Role="APPLICATION_GROUP" Type="Self.APPLICATION_GROUP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APPLICATION">
+              <PropertyRef Name="APPLICATION_ID" />
+            </Principal>
+            <Dependent Role="APPLICATION_GROUP">
+              <PropertyRef Name="APPLICAITON_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GROUP_PERMISSION_APPLICATION_GROUP">
+          <End Role="APPLICATION_GROUP" Type="Self.APPLICATION_GROUP" Multiplicity="0..1" />
+          <End Role="GROUP_PERMISSION" Type="Self.GROUP_PERMISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APPLICATION_GROUP">
+              <PropertyRef Name="GROUP_ID" />
+              <PropertyRef Name="APPLICAITON_ID" />
+            </Principal>
+            <Dependent Role="GROUP_PERMISSION">
+              <PropertyRef Name="GROUP_ID" />
+              <PropertyRef Name="APPLICATION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GROUP_PERMISSION_PERMISSION">
+          <End Role="PERMISSION" Type="Self.PERMISSION" Multiplicity="0..1" />
+          <End Role="GROUP_PERMISSION" Type="Self.GROUP_PERMISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERMISSION">
+              <PropertyRef Name="PERMISSION_ID" />
+              <PropertyRef Name="APPLICATION_ID" />
+            </Principal>
+            <Dependent Role="GROUP_PERMISSION">
+              <PropertyRef Name="PERMISSION_ID" />
+              <PropertyRef Name="APPLICATION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GROUP_PERMISSION_TARGET_VALUE">
+          <End Role="TARGET_VALUE" Type="Self.TARGET_VALUE" Multiplicity="0..1" />
+          <End Role="GROUP_PERMISSION" Type="Self.GROUP_PERMISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TARGET_VALUE">
+              <PropertyRef Name="TARGET_VALUE_ID" />
+            </Principal>
+            <Dependent Role="GROUP_PERMISSION">
+              <PropertyRef Name="TARGET_VALUE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERMISSION_APPLICATION">
+          <End Role="APPLICATION" Type="Self.APPLICATION" Multiplicity="1" />
+          <End Role="PERMISSION" Type="Self.PERMISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APPLICATION">
+              <PropertyRef Name="APPLICATION_ID" />
+            </Principal>
+            <Dependent Role="PERMISSION">
+              <PropertyRef Name="APPLICATION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERMISSION_PERMISSION">
+          <End Role="PERMISSION" Type="Self.PERMISSION" Multiplicity="1" />
+          <End Role="PERMISSION1" Type="Self.PERMISSION" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PERMISSION">
+              <PropertyRef Name="PERMISSION_ID" />
+              <PropertyRef Name="APPLICATION_ID" />
+            </Principal>
+            <Dependent Role="PERMISSION1">
+              <PropertyRef Name="PERMISSION_ID" />
+              <PropertyRef Name="APPLICATION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERMISSION_TARGET">
+          <End Role="TARGET" Type="Self.TARGET" Multiplicity="0..1" />
+          <End Role="PERMISSION" Type="Self.PERMISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TARGET">
+              <PropertyRef Name="TARGET_ID" />
+              <PropertyRef Name="APPLICATION_ID" />
+            </Principal>
+            <Dependent Role="PERMISSION">
+              <PropertyRef Name="TARGET_ID" />
+              <PropertyRef Name="APPLICATION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TARGET_APPLICATION">
+          <End Role="APPLICATION" Type="Self.APPLICATION" Multiplicity="1" />
+          <End Role="TARGET" Type="Self.TARGET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APPLICATION">
+              <PropertyRef Name="APPLICATION_ID" />
+            </Principal>
+            <Dependent Role="TARGET">
+              <PropertyRef Name="APPLICATION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TARGET_VALUE_TARGET">
+          <End Role="TARGET" Type="Self.TARGET" Multiplicity="1" />
+          <End Role="TARGET_VALUE" Type="Self.TARGET_VALUE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TARGET">
+              <PropertyRef Name="TARGET_ID" />
+              <PropertyRef Name="APPLICATION_ID" />
+            </Principal>
+            <Dependent Role="TARGET_VALUE">
+              <PropertyRef Name="TARGET_ID" />
+              <PropertyRef Name="APPLICATION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_APPLICATION_GROUP_APPLICATION_GROUP">
+          <End Role="APPLICATION_GROUP" Type="Self.APPLICATION_GROUP" Multiplicity="0..1" />
+          <End Role="USER_APPLICATION_GROUP" Type="Self.USER_APPLICATION_GROUP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APPLICATION_GROUP">
+              <PropertyRef Name="GROUP_ID" />
+              <PropertyRef Name="APPLICAITON_ID" />
+            </Principal>
+            <Dependent Role="USER_APPLICATION_GROUP">
+              <PropertyRef Name="GROUP_ID" />
+              <PropertyRef Name="APPLICATION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_APPLICATION_GROUP_USER">
+          <End Role="USER" Type="Self.USER" Multiplicity="1" />
+          <End Role="USER_APPLICATION_GROUP" Type="Self.USER_APPLICATION_GROUP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="USER_APPLICATION_GROUP">
+              <PropertyRef Name="USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_PERMISSION_PERMISSION">
+          <End Role="PERMISSION" Type="Self.PERMISSION" Multiplicity="1" />
+          <End Role="USER_PERMISSION" Type="Self.USER_PERMISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERMISSION">
+              <PropertyRef Name="PERMISSION_ID" />
+              <PropertyRef Name="APPLICATION_ID" />
+            </Principal>
+            <Dependent Role="USER_PERMISSION">
+              <PropertyRef Name="PERMISSION_ID" />
+              <PropertyRef Name="APPLICATION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_PERMISSION_TARGET_VALUE">
+          <End Role="TARGET_VALUE" Type="Self.TARGET_VALUE" Multiplicity="0..1" />
+          <End Role="USER_PERMISSION" Type="Self.USER_PERMISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TARGET_VALUE">
+              <PropertyRef Name="TARGET_VALUE_ID" />
+            </Principal>
+            <Dependent Role="USER_PERMISSION">
+              <PropertyRef Name="TARGET_VALUE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_PERMISSION_USER">
+          <End Role="USER" Type="Self.USER" Multiplicity="1" />
+          <End Role="USER_PERMISSION" Type="Self.USER_PERMISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="USER_PERMISSION">
+              <PropertyRef Name="USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AppCentreModelStoreContainer">
+          <EntitySet Name="ACTIVITY_LOG" EntityType="Self.ACTIVITY_LOG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="APPLICATION" EntityType="Self.APPLICATION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="APPLICATION_GROUP" EntityType="Self.APPLICATION_GROUP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CATALOG" EntityType="Self.CATALOG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GROUP_PERMISSION" EntityType="Self.GROUP_PERMISSION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PERMISSION" EntityType="Self.PERMISSION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TARGET" EntityType="Self.TARGET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TARGET_VALUE" EntityType="Self.TARGET_VALUE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER" EntityType="Self.USER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER_APPLICATION_GROUP" EntityType="Self.USER_APPLICATION_GROUP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER_PERMISSION" EntityType="Self.USER_PERMISSION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VW_USER_PERMISSION" EntityType="Self.VW_USER_PERMISSION" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_USER_PERMISSION].[USER_NAME] AS [USER_NAME], 
+    [VW_USER_PERMISSION].[APPLICATION_ID] AS [APPLICATION_ID], 
+    [VW_USER_PERMISSION].[PERMISSION_ID] AS [PERMISSION_ID], 
+    [VW_USER_PERMISSION].[PERMISSION_NAME] AS [PERMISSION_NAME], 
+    [VW_USER_PERMISSION].[VALUE] AS [VALUE]
+    FROM [dbo].[VW_USER_PERMISSION] AS [VW_USER_PERMISSION]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_APPLICATION_CATALOG" Association="Self.FK_APPLICATION_CATALOG">
+            <End Role="CATALOG" EntitySet="CATALOG" />
+            <End Role="APPLICATION" EntitySet="APPLICATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_APPLICATION_GROUP_APPLICATION" Association="Self.FK_APPLICATION_GROUP_APPLICATION">
+            <End Role="APPLICATION" EntitySet="APPLICATION" />
+            <End Role="APPLICATION_GROUP" EntitySet="APPLICATION_GROUP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GROUP_PERMISSION_APPLICATION_GROUP" Association="Self.FK_GROUP_PERMISSION_APPLICATION_GROUP">
+            <End Role="APPLICATION_GROUP" EntitySet="APPLICATION_GROUP" />
+            <End Role="GROUP_PERMISSION" EntitySet="GROUP_PERMISSION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GROUP_PERMISSION_PERMISSION" Association="Self.FK_GROUP_PERMISSION_PERMISSION">
+            <End Role="PERMISSION" EntitySet="PERMISSION" />
+            <End Role="GROUP_PERMISSION" EntitySet="GROUP_PERMISSION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GROUP_PERMISSION_TARGET_VALUE" Association="Self.FK_GROUP_PERMISSION_TARGET_VALUE">
+            <End Role="TARGET_VALUE" EntitySet="TARGET_VALUE" />
+            <End Role="GROUP_PERMISSION" EntitySet="GROUP_PERMISSION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERMISSION_APPLICATION" Association="Self.FK_PERMISSION_APPLICATION">
+            <End Role="APPLICATION" EntitySet="APPLICATION" />
+            <End Role="PERMISSION" EntitySet="PERMISSION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERMISSION_PERMISSION" Association="Self.FK_PERMISSION_PERMISSION">
+            <End Role="PERMISSION" EntitySet="PERMISSION" />
+            <End Role="PERMISSION1" EntitySet="PERMISSION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERMISSION_TARGET" Association="Self.FK_PERMISSION_TARGET">
+            <End Role="TARGET" EntitySet="TARGET" />
+            <End Role="PERMISSION" EntitySet="PERMISSION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TARGET_APPLICATION" Association="Self.FK_TARGET_APPLICATION">
+            <End Role="APPLICATION" EntitySet="APPLICATION" />
+            <End Role="TARGET" EntitySet="TARGET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TARGET_VALUE_TARGET" Association="Self.FK_TARGET_VALUE_TARGET">
+            <End Role="TARGET" EntitySet="TARGET" />
+            <End Role="TARGET_VALUE" EntitySet="TARGET_VALUE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_APPLICATION_GROUP_APPLICATION_GROUP" Association="Self.FK_USER_APPLICATION_GROUP_APPLICATION_GROUP">
+            <End Role="APPLICATION_GROUP" EntitySet="APPLICATION_GROUP" />
+            <End Role="USER_APPLICATION_GROUP" EntitySet="USER_APPLICATION_GROUP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_APPLICATION_GROUP_USER" Association="Self.FK_USER_APPLICATION_GROUP_USER">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="USER_APPLICATION_GROUP" EntitySet="USER_APPLICATION_GROUP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_PERMISSION_PERMISSION" Association="Self.FK_USER_PERMISSION_PERMISSION">
+            <End Role="PERMISSION" EntitySet="PERMISSION" />
+            <End Role="USER_PERMISSION" EntitySet="USER_PERMISSION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_PERMISSION_TARGET_VALUE" Association="Self.FK_USER_PERMISSION_TARGET_VALUE">
+            <End Role="TARGET_VALUE" EntitySet="TARGET_VALUE" />
+            <End Role="USER_PERMISSION" EntitySet="USER_PERMISSION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_PERMISSION_USER" Association="Self.FK_USER_PERMISSION_USER">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="USER_PERMISSION" EntitySet="USER_PERMISSION" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AppCentreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ACTIVITY_LOG">
+          <Key>
+            <PropertyRef Name="ACTIVITY_LOG_ID" />
+          </Key>
+          <Property Name="ACTIVITY_LOG_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USER_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APPLICATION_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TARGET_VALUE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACTIVITY_DATE" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="APPLICATION">
+          <Key>
+            <PropertyRef Name="APPLICATION_ID" />
+          </Key>
+          <Property Name="APPLICATION_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CATALOG_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="APPLICATION_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APPLICATION_URI" Type="String" MaxLength="215" FixedLength="false" Unicode="false" />
+          <Property Name="APPLICATION_DESC" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CATALOG" Relationship="Self.FK_APPLICATION_CATALOG" FromRole="APPLICATION" ToRole="CATALOG" />
+          <NavigationProperty Name="APPLICATION_GROUP" Relationship="Self.FK_APPLICATION_GROUP_APPLICATION" FromRole="APPLICATION" ToRole="APPLICATION_GROUP" />
+          <NavigationProperty Name="PERMISSIONs" Relationship="Self.FK_PERMISSION_APPLICATION" FromRole="APPLICATION" ToRole="PERMISSION" />
+          <NavigationProperty Name="TARGETs" Relationship="Self.FK_TARGET_APPLICATION" FromRole="APPLICATION" ToRole="TARGET" />
+        </EntityType>
+        <EntityType Name="APPLICATION_GROUP">
+          <Key>
+            <PropertyRef Name="GROUP_ID" />
+            <PropertyRef Name="APPLICAITON_ID" />
+          </Key>
+          <Property Name="GROUP_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APPLICAITON_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GROUP_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="APPLICATION" Relationship="Self.FK_APPLICATION_GROUP_APPLICATION" FromRole="APPLICATION_GROUP" ToRole="APPLICATION" />
+          <NavigationProperty Name="GROUP_PERMISSION" Relationship="Self.FK_GROUP_PERMISSION_APPLICATION_GROUP" FromRole="APPLICATION_GROUP" ToRole="GROUP_PERMISSION" />
+          <NavigationProperty Name="USER_APPLICATION_GROUP" Relationship="Self.FK_USER_APPLICATION_GROUP_APPLICATION_GROUP" FromRole="APPLICATION_GROUP" ToRole="USER_APPLICATION_GROUP" />
+        </EntityType>
+        <EntityType Name="CATALOG">
+          <Key>
+            <PropertyRef Name="CATALOG_ID" />
+          </Key>
+          <Property Name="CATALOG_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CATALOG_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="APPLICATIONs" Relationship="Self.FK_APPLICATION_CATALOG" FromRole="CATALOG" ToRole="APPLICATION" />
+        </EntityType>
+        <EntityType Name="GROUP_PERMISSION">
+          <Key>
+            <PropertyRef Name="GROUP_PERMISSSION_ID" />
+          </Key>
+          <Property Name="GROUP_PERMISSSION_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GROUP_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="APPLICATION_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="PERMISSION_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="TARGET_VALUE_ID" Type="Int32" />
+          <NavigationProperty Name="APPLICATION_GROUP" Relationship="Self.FK_GROUP_PERMISSION_APPLICATION_GROUP" FromRole="GROUP_PERMISSION" ToRole="APPLICATION_GROUP" />
+          <NavigationProperty Name="PERMISSION" Relationship="Self.FK_GROUP_PERMISSION_PERMISSION" FromRole="GROUP_PERMISSION" ToRole="PERMISSION" />
+          <NavigationProperty Name="TARGET_VALUE" Relationship="Self.FK_GROUP_PERMISSION_TARGET_VALUE" FromRole="GROUP_PERMISSION" ToRole="TARGET_VALUE" />
+        </EntityType>
+        <EntityType Name="PERMISSION">
+          <Key>
+            <PropertyRef Name="PERMISSION_ID" />
+            <PropertyRef Name="APPLICATION_ID" />
+          </Key>
+          <Property Name="PERMISSION_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APPLICATION_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TARGET_ID" Type="Int32" />
+          <Property Name="PERMISSION_NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="APPLICATION" Relationship="Self.FK_PERMISSION_APPLICATION" FromRole="PERMISSION" ToRole="APPLICATION" />
+          <NavigationProperty Name="GROUP_PERMISSION" Relationship="Self.FK_GROUP_PERMISSION_PERMISSION" FromRole="PERMISSION" ToRole="GROUP_PERMISSION" />
+          <NavigationProperty Name="TARGET" Relationship="Self.FK_PERMISSION_TARGET" FromRole="PERMISSION" ToRole="TARGET" />
+          <NavigationProperty Name="USER_PERMISSION" Relationship="Self.FK_USER_PERMISSION_PERMISSION" FromRole="PERMISSION" ToRole="USER_PERMISSION" />
+          <Property Name="GROUP_ENABLED" Type="Boolean" />
+          <NavigationProperty Name="PERMISSION1" Relationship="AppCentreModel.FK_PERMISSION_PERMISSION" FromRole="PERMISSION" ToRole="PERMISSION1" />
+          <NavigationProperty Name="PERMISSION2" Relationship="AppCentreModel.FK_PERMISSION_PERMISSION" FromRole="PERMISSION1" ToRole="PERMISSION" />
+        </EntityType>
+        <EntityType Name="TARGET">
+          <Key>
+            <PropertyRef Name="TARGET_ID" />
+            <PropertyRef Name="APPLICATION_ID" />
+          </Key>
+          <Property Name="TARGET_ID" Type="Int32" Nullable="false" />
+          <Property Name="APPLICATION_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TARGET_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="APPLICATION" Relationship="Self.FK_TARGET_APPLICATION" FromRole="TARGET" ToRole="APPLICATION" />
+          <NavigationProperty Name="PERMISSIONs" Relationship="Self.FK_PERMISSION_TARGET" FromRole="TARGET" ToRole="PERMISSION" />
+          <NavigationProperty Name="TARGET_VALUE" Relationship="Self.FK_TARGET_VALUE_TARGET" FromRole="TARGET" ToRole="TARGET_VALUE" />
+        </EntityType>
+        <EntityType Name="TARGET_VALUE">
+          <Key>
+            <PropertyRef Name="TARGET_VALUE_ID" />
+          </Key>
+          <Property Name="TARGET_VALUE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TARGET_ID" Type="Int32" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VALUE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APPLICATION_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="GROUP_PERMISSION" Relationship="Self.FK_GROUP_PERMISSION_TARGET_VALUE" FromRole="TARGET_VALUE" ToRole="GROUP_PERMISSION" />
+          <NavigationProperty Name="TARGET" Relationship="Self.FK_TARGET_VALUE_TARGET" FromRole="TARGET_VALUE" ToRole="TARGET" />
+          <NavigationProperty Name="USER_PERMISSION" Relationship="Self.FK_USER_PERMISSION_TARGET_VALUE" FromRole="TARGET_VALUE" ToRole="USER_PERMISSION" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="USER_ID" />
+          </Key>
+          <Property Name="USER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USER_NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FIRST_NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LAST_NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TITLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PHONE" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="CREATE_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LAST_MODIFIED" Type="DateTime" Precision="3" />
+          <Property Name="MODIFIED_BY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="USER_APPLICATION_GROUP" Relationship="Self.FK_USER_APPLICATION_GROUP_USER" FromRole="USER" ToRole="USER_APPLICATION_GROUP" />
+          <NavigationProperty Name="USER_PERMISSION" Relationship="Self.FK_USER_PERMISSION_USER" FromRole="USER" ToRole="USER_PERMISSION" />
+        </EntityType>
+        <EntityType Name="USER_APPLICATION_GROUP">
+          <Key>
+            <PropertyRef Name="USER_APPLICATION_GROUP_ID" />
+          </Key>
+          <Property Name="USER_APPLICATION_GROUP_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USER_ID" Type="Int32" Nullable="false" />
+          <Property Name="GROUP_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="APPLICATION_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="APPLICATION_GROUP" Relationship="Self.FK_USER_APPLICATION_GROUP_APPLICATION_GROUP" FromRole="USER_APPLICATION_GROUP" ToRole="APPLICATION_GROUP" />
+          <NavigationProperty Name="USER" Relationship="Self.FK_USER_APPLICATION_GROUP_USER" FromRole="USER_APPLICATION_GROUP" ToRole="USER" />
+        </EntityType>
+        <EntityType Name="USER_PERMISSION">
+          <Key>
+            <PropertyRef Name="USER_PERMISSION_ID" />
+          </Key>
+          <Property Name="USER_PERMISSION_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USER_ID" Type="Int32" Nullable="false" />
+          <Property Name="PERMISSION_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APPLICATION_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TARGET_VALUE_ID" Type="Int32" />
+          <Property Name="GRANT" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="PERMISSION" Relationship="Self.FK_USER_PERMISSION_PERMISSION" FromRole="USER_PERMISSION" ToRole="PERMISSION" />
+          <NavigationProperty Name="TARGET_VALUE" Relationship="Self.FK_USER_PERMISSION_TARGET_VALUE" FromRole="USER_PERMISSION" ToRole="TARGET_VALUE" />
+          <NavigationProperty Name="USER" Relationship="Self.FK_USER_PERMISSION_USER" FromRole="USER_PERMISSION" ToRole="USER" />
+        </EntityType>
+        <EntityType Name="VW_USER_PERMISSION">
+          <Key>
+            <PropertyRef Name="USER_NAME" />
+            <PropertyRef Name="APPLICATION_ID" />
+            <PropertyRef Name="PERMISSION_ID" />
+            <PropertyRef Name="PERMISSION_NAME" />
+          </Key>
+          <Property Name="USER_NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APPLICATION_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PERMISSION_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PERMISSION_NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VALUE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_APPLICATION_CATALOG">
+          <End Role="CATALOG" Type="Self.CATALOG" Multiplicity="0..1" />
+          <End Role="APPLICATION" Type="Self.APPLICATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATALOG">
+              <PropertyRef Name="CATALOG_ID" />
+            </Principal>
+            <Dependent Role="APPLICATION">
+              <PropertyRef Name="CATALOG_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_APPLICATION_GROUP_APPLICATION">
+          <End Role="APPLICATION" Type="Self.APPLICATION" Multiplicity="1" />
+          <End Role="APPLICATION_GROUP" Type="Self.APPLICATION_GROUP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APPLICATION">
+              <PropertyRef Name="APPLICATION_ID" />
+            </Principal>
+            <Dependent Role="APPLICATION_GROUP">
+              <PropertyRef Name="APPLICAITON_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERMISSION_APPLICATION">
+          <End Role="APPLICATION" Type="Self.APPLICATION" Multiplicity="1" />
+          <End Role="PERMISSION" Type="Self.PERMISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APPLICATION">
+              <PropertyRef Name="APPLICATION_ID" />
+            </Principal>
+            <Dependent Role="PERMISSION">
+              <PropertyRef Name="APPLICATION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TARGET_APPLICATION">
+          <End Role="APPLICATION" Type="Self.APPLICATION" Multiplicity="1" />
+          <End Role="TARGET" Type="Self.TARGET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APPLICATION">
+              <PropertyRef Name="APPLICATION_ID" />
+            </Principal>
+            <Dependent Role="TARGET">
+              <PropertyRef Name="APPLICATION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GROUP_PERMISSION_APPLICATION_GROUP">
+          <End Role="APPLICATION_GROUP" Type="Self.APPLICATION_GROUP" Multiplicity="0..1" />
+          <End Role="GROUP_PERMISSION" Type="Self.GROUP_PERMISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APPLICATION_GROUP">
+              <PropertyRef Name="GROUP_ID" />
+              <PropertyRef Name="APPLICAITON_ID" />
+            </Principal>
+            <Dependent Role="GROUP_PERMISSION">
+              <PropertyRef Name="GROUP_ID" />
+              <PropertyRef Name="APPLICATION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_APPLICATION_GROUP_APPLICATION_GROUP">
+          <End Role="APPLICATION_GROUP" Type="Self.APPLICATION_GROUP" Multiplicity="0..1" />
+          <End Role="USER_APPLICATION_GROUP" Type="Self.USER_APPLICATION_GROUP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APPLICATION_GROUP">
+              <PropertyRef Name="GROUP_ID" />
+              <PropertyRef Name="APPLICAITON_ID" />
+            </Principal>
+            <Dependent Role="USER_APPLICATION_GROUP">
+              <PropertyRef Name="GROUP_ID" />
+              <PropertyRef Name="APPLICATION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GROUP_PERMISSION_PERMISSION">
+          <End Role="PERMISSION" Type="Self.PERMISSION" Multiplicity="0..1" />
+          <End Role="GROUP_PERMISSION" Type="Self.GROUP_PERMISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERMISSION">
+              <PropertyRef Name="PERMISSION_ID" />
+              <PropertyRef Name="APPLICATION_ID" />
+            </Principal>
+            <Dependent Role="GROUP_PERMISSION">
+              <PropertyRef Name="PERMISSION_ID" />
+              <PropertyRef Name="APPLICATION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GROUP_PERMISSION_TARGET_VALUE">
+          <End Role="TARGET_VALUE" Type="Self.TARGET_VALUE" Multiplicity="0..1" />
+          <End Role="GROUP_PERMISSION" Type="Self.GROUP_PERMISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TARGET_VALUE">
+              <PropertyRef Name="TARGET_VALUE_ID" />
+            </Principal>
+            <Dependent Role="GROUP_PERMISSION">
+              <PropertyRef Name="TARGET_VALUE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERMISSION_TARGET">
+          <End Role="TARGET" Type="Self.TARGET" Multiplicity="0..1" />
+          <End Role="PERMISSION" Type="Self.PERMISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TARGET">
+              <PropertyRef Name="TARGET_ID" />
+              <PropertyRef Name="APPLICATION_ID" />
+            </Principal>
+            <Dependent Role="PERMISSION">
+              <PropertyRef Name="TARGET_ID" />
+              <PropertyRef Name="APPLICATION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_PERMISSION_PERMISSION">
+          <End Role="PERMISSION" Type="Self.PERMISSION" Multiplicity="1" />
+          <End Role="USER_PERMISSION" Type="Self.USER_PERMISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERMISSION">
+              <PropertyRef Name="PERMISSION_ID" />
+              <PropertyRef Name="APPLICATION_ID" />
+            </Principal>
+            <Dependent Role="USER_PERMISSION">
+              <PropertyRef Name="PERMISSION_ID" />
+              <PropertyRef Name="APPLICATION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TARGET_VALUE_TARGET">
+          <End Role="TARGET" Type="Self.TARGET" Multiplicity="1" />
+          <End Role="TARGET_VALUE" Type="Self.TARGET_VALUE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TARGET">
+              <PropertyRef Name="TARGET_ID" />
+              <PropertyRef Name="APPLICATION_ID" />
+            </Principal>
+            <Dependent Role="TARGET_VALUE">
+              <PropertyRef Name="TARGET_ID" />
+              <PropertyRef Name="APPLICATION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_PERMISSION_TARGET_VALUE">
+          <End Role="TARGET_VALUE" Type="Self.TARGET_VALUE" Multiplicity="0..1" />
+          <End Role="USER_PERMISSION" Type="Self.USER_PERMISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TARGET_VALUE">
+              <PropertyRef Name="TARGET_VALUE_ID" />
+            </Principal>
+            <Dependent Role="USER_PERMISSION">
+              <PropertyRef Name="TARGET_VALUE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_APPLICATION_GROUP_USER">
+          <End Role="USER" Type="Self.USER" Multiplicity="1" />
+          <End Role="USER_APPLICATION_GROUP" Type="Self.USER_APPLICATION_GROUP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="USER_APPLICATION_GROUP">
+              <PropertyRef Name="USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_PERMISSION_USER">
+          <End Role="USER" Type="Self.USER" Multiplicity="1" />
+          <End Role="USER_PERMISSION" Type="Self.USER_PERMISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="USER_PERMISSION">
+              <PropertyRef Name="USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AppCentreEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ACTIVITY_LOG" EntityType="Self.ACTIVITY_LOG" />
+          <EntitySet Name="APPLICATIONs" EntityType="Self.APPLICATION" />
+          <EntitySet Name="APPLICATION_GROUP" EntityType="Self.APPLICATION_GROUP" />
+          <EntitySet Name="CATALOGs" EntityType="Self.CATALOG" />
+          <EntitySet Name="GROUP_PERMISSION" EntityType="Self.GROUP_PERMISSION" />
+          <EntitySet Name="PERMISSIONs" EntityType="Self.PERMISSION" />
+          <EntitySet Name="TARGETs" EntityType="Self.TARGET" />
+          <EntitySet Name="TARGET_VALUE" EntityType="Self.TARGET_VALUE" />
+          <EntitySet Name="USERs" EntityType="Self.USER" />
+          <EntitySet Name="USER_APPLICATION_GROUP" EntityType="Self.USER_APPLICATION_GROUP" />
+          <EntitySet Name="USER_PERMISSION" EntityType="Self.USER_PERMISSION" />
+          <EntitySet Name="VW_USER_PERMISSION" EntityType="Self.VW_USER_PERMISSION" />
+          <AssociationSet Name="FK_APPLICATION_CATALOG" Association="Self.FK_APPLICATION_CATALOG">
+            <End Role="CATALOG" EntitySet="CATALOGs" />
+            <End Role="APPLICATION" EntitySet="APPLICATIONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_APPLICATION_GROUP_APPLICATION" Association="Self.FK_APPLICATION_GROUP_APPLICATION">
+            <End Role="APPLICATION" EntitySet="APPLICATIONs" />
+            <End Role="APPLICATION_GROUP" EntitySet="APPLICATION_GROUP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERMISSION_APPLICATION" Association="Self.FK_PERMISSION_APPLICATION">
+            <End Role="APPLICATION" EntitySet="APPLICATIONs" />
+            <End Role="PERMISSION" EntitySet="PERMISSIONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TARGET_APPLICATION" Association="Self.FK_TARGET_APPLICATION">
+            <End Role="APPLICATION" EntitySet="APPLICATIONs" />
+            <End Role="TARGET" EntitySet="TARGETs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GROUP_PERMISSION_APPLICATION_GROUP" Association="Self.FK_GROUP_PERMISSION_APPLICATION_GROUP">
+            <End Role="APPLICATION_GROUP" EntitySet="APPLICATION_GROUP" />
+            <End Role="GROUP_PERMISSION" EntitySet="GROUP_PERMISSION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_APPLICATION_GROUP_APPLICATION_GROUP" Association="Self.FK_USER_APPLICATION_GROUP_APPLICATION_GROUP">
+            <End Role="APPLICATION_GROUP" EntitySet="APPLICATION_GROUP" />
+            <End Role="USER_APPLICATION_GROUP" EntitySet="USER_APPLICATION_GROUP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GROUP_PERMISSION_PERMISSION" Association="Self.FK_GROUP_PERMISSION_PERMISSION">
+            <End Role="PERMISSION" EntitySet="PERMISSIONs" />
+            <End Role="GROUP_PERMISSION" EntitySet="GROUP_PERMISSION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GROUP_PERMISSION_TARGET_VALUE" Association="Self.FK_GROUP_PERMISSION_TARGET_VALUE">
+            <End Role="TARGET_VALUE" EntitySet="TARGET_VALUE" />
+            <End Role="GROUP_PERMISSION" EntitySet="GROUP_PERMISSION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERMISSION_TARGET" Association="Self.FK_PERMISSION_TARGET">
+            <End Role="TARGET" EntitySet="TARGETs" />
+            <End Role="PERMISSION" EntitySet="PERMISSIONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_PERMISSION_PERMISSION" Association="Self.FK_USER_PERMISSION_PERMISSION">
+            <End Role="PERMISSION" EntitySet="PERMISSIONs" />
+            <End Role="USER_PERMISSION" EntitySet="USER_PERMISSION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TARGET_VALUE_TARGET" Association="Self.FK_TARGET_VALUE_TARGET">
+            <End Role="TARGET" EntitySet="TARGETs" />
+            <End Role="TARGET_VALUE" EntitySet="TARGET_VALUE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_PERMISSION_TARGET_VALUE" Association="Self.FK_USER_PERMISSION_TARGET_VALUE">
+            <End Role="TARGET_VALUE" EntitySet="TARGET_VALUE" />
+            <End Role="USER_PERMISSION" EntitySet="USER_PERMISSION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_APPLICATION_GROUP_USER" Association="Self.FK_USER_APPLICATION_GROUP_USER">
+            <End Role="USER" EntitySet="USERs" />
+            <End Role="USER_APPLICATION_GROUP" EntitySet="USER_APPLICATION_GROUP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_PERMISSION_USER" Association="Self.FK_USER_PERMISSION_USER">
+            <End Role="USER" EntitySet="USERs" />
+            <End Role="USER_PERMISSION" EntitySet="USER_PERMISSION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERMISSION_PERMISSION" Association="AppCentreModel.FK_PERMISSION_PERMISSION">
+            <End Role="PERMISSION" EntitySet="PERMISSIONs" />
+            <End Role="PERMISSION1" EntitySet="PERMISSIONs" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_PERMISSION_PERMISSION">
+          <End Type="AppCentreModel.PERMISSION" Role="PERMISSION" Multiplicity="1" />
+          <End Type="AppCentreModel.PERMISSION" Role="PERMISSION1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PERMISSION">
+              <PropertyRef Name="PERMISSION_ID" />
+              <PropertyRef Name="APPLICATION_ID" />
+            </Principal>
+            <Dependent Role="PERMISSION1">
+              <PropertyRef Name="PERMISSION_ID" />
+              <PropertyRef Name="APPLICATION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AppCentreModelStoreContainer" CdmEntityContainer="AppCentreEntities">
+          <EntitySetMapping Name="ACTIVITY_LOG">
+            <EntityTypeMapping TypeName="AppCentreModel.ACTIVITY_LOG">
+              <MappingFragment StoreEntitySet="ACTIVITY_LOG">
+                <ScalarProperty Name="ACTIVITY_LOG_ID" ColumnName="ACTIVITY_LOG_ID" />
+                <ScalarProperty Name="USER_NAME" ColumnName="USER_NAME" />
+                <ScalarProperty Name="APPLICATION_NAME" ColumnName="APPLICATION_NAME" />
+                <ScalarProperty Name="TARGET_VALUE" ColumnName="TARGET_VALUE" />
+                <ScalarProperty Name="ACTIVITY_DATE" ColumnName="ACTIVITY_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APPLICATIONs">
+            <EntityTypeMapping TypeName="AppCentreModel.APPLICATION">
+              <MappingFragment StoreEntitySet="APPLICATION">
+                <ScalarProperty Name="APPLICATION_ID" ColumnName="APPLICATION_ID" />
+                <ScalarProperty Name="CATALOG_ID" ColumnName="CATALOG_ID" />
+                <ScalarProperty Name="APPLICATION_NAME" ColumnName="APPLICATION_NAME" />
+                <ScalarProperty Name="APPLICATION_URI" ColumnName="APPLICATION_URI" />
+                <ScalarProperty Name="APPLICATION_DESC" ColumnName="APPLICATION_DESC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APPLICATION_GROUP">
+            <EntityTypeMapping TypeName="AppCentreModel.APPLICATION_GROUP">
+              <MappingFragment StoreEntitySet="APPLICATION_GROUP">
+                <ScalarProperty Name="GROUP_ID" ColumnName="GROUP_ID" />
+                <ScalarProperty Name="APPLICAITON_ID" ColumnName="APPLICAITON_ID" />
+                <ScalarProperty Name="GROUP_NAME" ColumnName="GROUP_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CATALOGs">
+            <EntityTypeMapping TypeName="AppCentreModel.CATALOG">
+              <MappingFragment StoreEntitySet="CATALOG">
+                <ScalarProperty Name="CATALOG_ID" ColumnName="CATALOG_ID" />
+                <ScalarProperty Name="CATALOG_NAME" ColumnName="CATALOG_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GROUP_PERMISSION">
+            <EntityTypeMapping TypeName="AppCentreModel.GROUP_PERMISSION">
+              <MappingFragment StoreEntitySet="GROUP_PERMISSION">
+                <ScalarProperty Name="GROUP_PERMISSSION_ID" ColumnName="GROUP_PERMISSSION_ID" />
+                <ScalarProperty Name="GROUP_ID" ColumnName="GROUP_ID" />
+                <ScalarProperty Name="APPLICATION_ID" ColumnName="APPLICATION_ID" />
+                <ScalarProperty Name="PERMISSION_ID" ColumnName="PERMISSION_ID" />
+                <ScalarProperty Name="TARGET_VALUE_ID" ColumnName="TARGET_VALUE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PERMISSIONs">
+            <EntityTypeMapping TypeName="AppCentreModel.PERMISSION">
+              <MappingFragment StoreEntitySet="PERMISSION">
+                <ScalarProperty Name="GROUP_ENABLED" ColumnName="GROUP_ENABLED" />
+                <ScalarProperty Name="PERMISSION_ID" ColumnName="PERMISSION_ID" />
+                <ScalarProperty Name="APPLICATION_ID" ColumnName="APPLICATION_ID" />
+                <ScalarProperty Name="TARGET_ID" ColumnName="TARGET_ID" />
+                <ScalarProperty Name="PERMISSION_NAME" ColumnName="PERMISSION_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TARGETs">
+            <EntityTypeMapping TypeName="AppCentreModel.TARGET">
+              <MappingFragment StoreEntitySet="TARGET">
+                <ScalarProperty Name="TARGET_ID" ColumnName="TARGET_ID" />
+                <ScalarProperty Name="APPLICATION_ID" ColumnName="APPLICATION_ID" />
+                <ScalarProperty Name="TARGET_NAME" ColumnName="TARGET_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TARGET_VALUE">
+            <EntityTypeMapping TypeName="AppCentreModel.TARGET_VALUE">
+              <MappingFragment StoreEntitySet="TARGET_VALUE">
+                <ScalarProperty Name="TARGET_VALUE_ID" ColumnName="TARGET_VALUE_ID" />
+                <ScalarProperty Name="TARGET_ID" ColumnName="TARGET_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="VALUE" ColumnName="VALUE" />
+                <ScalarProperty Name="APPLICATION_ID" ColumnName="APPLICATION_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERs">
+            <EntityTypeMapping TypeName="AppCentreModel.USER">
+              <MappingFragment StoreEntitySet="USER">
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="USER_NAME" ColumnName="USER_NAME" />
+                <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
+                <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="LAST_MODIFIED" ColumnName="LAST_MODIFIED" />
+                <ScalarProperty Name="MODIFIED_BY" ColumnName="MODIFIED_BY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USER_APPLICATION_GROUP">
+            <EntityTypeMapping TypeName="AppCentreModel.USER_APPLICATION_GROUP">
+              <MappingFragment StoreEntitySet="USER_APPLICATION_GROUP">
+                <ScalarProperty Name="USER_APPLICATION_GROUP_ID" ColumnName="USER_APPLICATION_GROUP_ID" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="GROUP_ID" ColumnName="GROUP_ID" />
+                <ScalarProperty Name="APPLICATION_ID" ColumnName="APPLICATION_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USER_PERMISSION">
+            <EntityTypeMapping TypeName="AppCentreModel.USER_PERMISSION">
+              <MappingFragment StoreEntitySet="USER_PERMISSION">
+                <ScalarProperty Name="USER_PERMISSION_ID" ColumnName="USER_PERMISSION_ID" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="PERMISSION_ID" ColumnName="PERMISSION_ID" />
+                <ScalarProperty Name="APPLICATION_ID" ColumnName="APPLICATION_ID" />
+                <ScalarProperty Name="TARGET_VALUE_ID" ColumnName="TARGET_VALUE_ID" />
+                <ScalarProperty Name="GRANT" ColumnName="GRANT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_USER_PERMISSION">
+            <EntityTypeMapping TypeName="AppCentreModel.VW_USER_PERMISSION">
+              <MappingFragment StoreEntitySet="VW_USER_PERMISSION">
+                <ScalarProperty Name="USER_NAME" ColumnName="USER_NAME" />
+                <ScalarProperty Name="APPLICATION_ID" ColumnName="APPLICATION_ID" />
+                <ScalarProperty Name="PERMISSION_ID" ColumnName="PERMISSION_ID" />
+                <ScalarProperty Name="PERMISSION_NAME" ColumnName="PERMISSION_NAME" />
+                <ScalarProperty Name="VALUE" ColumnName="VALUE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

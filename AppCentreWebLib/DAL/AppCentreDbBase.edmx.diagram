@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4f02f8593f6442169e71bef4be836d40" Name="Diagram1">
+        <EntityTypeShape EntityType="AppCentreModel.ACTIVITY_LOG" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppCentreModel.APPLICATION" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppCentreModel.APPLICATION_GROUP" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppCentreModel.CATALOG" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppCentreModel.GROUP_PERMISSION" Width="1.5" PointX="9.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppCentreModel.PERMISSION" Width="1.5" PointX="10.5" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppCentreModel.TARGET" Width="1.5" PointX="5.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppCentreModel.TARGET_VALUE" Width="1.5" PointX="7.5" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppCentreModel.USER" Width="2.125" PointX="4.625" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppCentreModel.USER_APPLICATION_GROUP" Width="1.5" PointX="7.5" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppCentreModel.USER_PERMISSION" Width="1.5" PointX="12.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppCentreModel.VW_USER_PERMISSION" Width="1.5" PointX="7.75" PointY="1.25" IsExpanded="true" />
+        <AssociationConnector Association="AppCentreModel.FK_APPLICATION_CATALOG" ManuallyRouted="false" />
+        <AssociationConnector Association="AppCentreModel.FK_APPLICATION_GROUP_APPLICATION" ManuallyRouted="false" />
+        <AssociationConnector Association="AppCentreModel.FK_PERMISSION_APPLICATION" ManuallyRouted="false" />
+        <AssociationConnector Association="AppCentreModel.FK_TARGET_APPLICATION" ManuallyRouted="false" />
+        <AssociationConnector Association="AppCentreModel.FK_GROUP_PERMISSION_APPLICATION_GROUP" ManuallyRouted="false" />
+        <AssociationConnector Association="AppCentreModel.FK_USER_APPLICATION_GROUP_APPLICATION_GROUP" ManuallyRouted="false" />
+        <AssociationConnector Association="AppCentreModel.FK_GROUP_PERMISSION_PERMISSION" ManuallyRouted="false" />
+        <AssociationConnector Association="AppCentreModel.FK_GROUP_PERMISSION_TARGET_VALUE" ManuallyRouted="false" />
+        <AssociationConnector Association="AppCentreModel.FK_PERMISSION_TARGET" ManuallyRouted="false" />
+        <AssociationConnector Association="AppCentreModel.FK_USER_PERMISSION_PERMISSION" ManuallyRouted="false" />
+        <AssociationConnector Association="AppCentreModel.FK_TARGET_VALUE_TARGET" ManuallyRouted="false" />
+        <AssociationConnector Association="AppCentreModel.FK_USER_PERMISSION_TARGET_VALUE" ManuallyRouted="false" />
+        <AssociationConnector Association="AppCentreModel.FK_USER_APPLICATION_GROUP_USER" ManuallyRouted="false" />
+        <AssociationConnector Association="AppCentreModel.FK_USER_PERMISSION_USER" ManuallyRouted="false" />
+        <AssociationConnector Association="AppCentreModel.FK_PERMISSION_PERMISSION" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
